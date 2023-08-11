@@ -1,0 +1,30 @@
+# contains enrollment codes and passwords for the production environment
+
+#enrollment command for win10
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.9.0-windows-x86_64.zip -OutFile elastic-agent-8.9.0-windows-x86_64.zip
+Expand-Archive .\elastic-agent-8.9.0-windows-x86_64.zip -DestinationPath .
+cd elastic-agent-8.9.0-windows-x86_64
+.\elastic-agent.exe install --url=https://192.168.100.200:8220 --enrollment-token=YlFUUjNZa0JZZEhWRTkwc3ItMGo6Rk95UGJEcE5SYkdIYk5STHI5U0w5QQ==
+
+PA firewall login:
+192.168.100.1
+Admin
+Password1
+
+Elastic login
+https://192.168.100.200:5601/
+elastic
+0caC++0tYQrYwFybBFV6
+
+Kibana token
+eyJ2ZXIiOiI4LjkuMCIsImFkciI6WyIxOTIuMTY4LjEwMC4yMDA6OTIwMCJdLCJmZ3IiOiI5MmY1OGU2ODg1NTg4OTQ3NzM1YzllMmU2YmI5MzAxZjIxOGZmN2M5MjJmNDFhZTI4ODRiYjFkMjcyYmY5Njc1Iiwia2V5IjoibmdSbTNZa0JZZEhWRTkwc3RzczA6V3M4NHpJZjRTNEtWNV9FV2NFOEZZdyJ9
+
+Kibana encryption keys
+xpack.encryptedSavedObjects.encryptionKey: 889e3db0d0cc6f33e8a43ca0f591fef2
+xpack.reporting.encryptionKey: c1252e86ed7765b323419c43775023a7
+xpack.security.encryptionKey: 522a3e16a9bf25be63ae5ae630a5f8e4
+
+Kali purple production
+Kali
+Kali
