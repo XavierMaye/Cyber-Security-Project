@@ -7,6 +7,13 @@ Expand-Archive .\elastic-agent-8.9.0-windows-x86_64.zip -DestinationPath .
 cd elastic-agent-8.9.0-windows-x86_64
 .\elastic-agent.exe install --url=https://192.168.100.200:8220 --enrollment-token=YlFUUjNZa0JZZEhWRTkwc3ItMGo6Rk95UGJEcE5SYkdIYk5STHI5U0w5QQ== --insecure
 
+#Linux tar enrollment command for ubuntu
+curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.9.0-linux-x86_64.tar.gz
+tar xzvf elastic-agent-8.9.0-linux-x86_64.tar.gz
+cd elastic-agent-8.9.0-linux-x86_64
+sudo ./elastic-agent install --url=https://192.168.100.200:8220 --enrollment-token=YlcwX0Jvb0I5T2szdGN5TVYxVUY6dC1QeFRxV0RUNk9aQm5YLTk2Smxudw== --insecure
+
+
 PA firewall login:
 192.168.100.1
 Admin
