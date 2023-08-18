@@ -35,3 +35,13 @@ Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agen
 Expand-Archive .\elastic-agent-8.9.0-windows-x86_64.zip -DestinationPath .
 cd elastic-agent-8.9.0-windows-x86_64
 .\elastic-agent.exe install --url=https://192.168.100.200:8220 --enrollment-token=YlFUUjNZa0JZZEhWRTkwc3ItMGo6Rk95UGJEcE5SYkdIYk5STHI5U0w5QQ==
+
+
+e209 wifi pw:
+gordonict
+
+192.168.100.1 opnsense login
+root
+opnsense
+
+dmz 192.168.50.1
