@@ -1,4 +1,5 @@
-Install Software Updates: To comply with the ASD 8 maturity level, 
+Install Software Updates: 
+To comply with the ASD 8 maturity level, 
 Patches, updates or other vendor mitigations for vulnerabilities in internet-facing services are applied within two weeks of release, or within 48 hours if an exploit exists.
 
 Under the “System > Settings > Administration” page we have configured the following:
@@ -8,15 +9,18 @@ Uncheked 'Disable DNS rebinding checks'
 We enable access logging
 We added a shell inactivity timeout of 60 minutes
 For access to Web GUI has been restricted to the LAN interface
-
 Add new admin user for IT access (use of root account should be avoided unless absolutely nessecary)
 Admin users with have access to Dashboard and widgets
-
 Disable root login through SSH (must use Web GUI from internal IP addrss)
-
 sudo commands require password input
-
 Enable 24 hour backup 
+
+Under firewall > schedules added a mon-fri schedule 7 pm to 7 am. Applied this schedule to network rules to only allow traffic outside these times, modify if unsuitable for business purposes.
+
+Firewall Rules:
+Add a new rule that allows LAN addresses access to the DNS server 
+Add a new rule to allows LAN traffic to bypass the blocked private network rule
+
 
 Interfaces [DMZ]
 We have congiured the firewall with the following settings:
