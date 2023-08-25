@@ -1,1 +1,111 @@
+Interfaces [DMZ]
+We have congiured the firewall with the following rules:
+
+Basic configurations 
+Enable: Yes enable interface
+Lock: NOT enabled
+Device: em2
+Description: DMZ
+
+
+Generic Configurations 
+Block private networks: 
+Block bogon networks:
+IPv4 Configuration Type: Static IPv4
+IPv6 Configuration Type: 
+MAC address:
+Promiscuious mode:
+MTU:
+MSS:
+Speed and Duplex: Default setting
+Dynamic gateway policy:
+
+
+Hardware settings
+Overwrite global settings:
+
+
+Static IPv4 configuration
+IPv4 address: 192.168.50.1
+IPv4 Upstream Gateway: Auto-detect
+
+Interfaces [LAN]
+We have congiured the firewall with the following rules:
+
+Basic configurations 
+Enable: Yes enable interface
+Lock: NOT enabled
+Device: em0
+Description: LAN
+
+
+Generic Configurations 
+Block private networks: 
+Block bogon networks:
+IPv4 Configuration Type: Static IPv4
+IPv6 Configuration Type: 
+MAC address:
+Promiscuious mode:
+MTU:
+MSS:
+Speed and Duplex: Default setting
+Dynamic gateway policy:
+
+
+Hardware settings
+Overwrite global settings:
+
+
+Static IPv4 configuration
+IPv4 address: 192.168.100.1
+IPv4 Upstream Gateway: Auto-detect
+
+
+Interfaces [WAN]
+We have congiured the firewall with the following rules:
+
+Basic configurations 
+Enable: Yes enable interface
+Lock: NOT enabled
+Device: em1
+Description: WAN
+
+
+Generic Configurations 
+Block private networks: Enable
+Block bogon networks: Enable
+IPv4 Configuration Type: DHCP
+IPv6 Configuration Type: 
+MAC address:
+Promiscuious mode:
+MTU:
+MSS:
+Speed and Duplex: Default setting
+Dynamic gateway policy:
+
+
+Hardware settings
+Overwrite global settings: NOT enabled
+
+
+DHCP client configuration
+
+Configuration Mode (Basic)
+Alias IPv4 ddress:
+Reject Leases From:
+Hostname:
+Override MTU: Enabled
+Use VLAN priority: Disabled
+
+Configuration Mode (Advanced)
+Reject Leases From:
+Hostname:
+Override MTU: Enabled
+Use VLAN priority: Disabled
+Protocol Timing: 
+Lease Requirements:
+
+Configuration Mode (Config File Override) 
+Configuration FIle Override: 
+
 
