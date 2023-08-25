@@ -1,1 +1,73 @@
+Kali Purple Production VM Setup Process:
+
+Upon installation adapter 1 was attached to the NAT network.
+
+Start Vm
+Graphical install
+Choose English
+Choose Australia
+Choose American English
+
+set hostname , username and password
+(e.g. kali, kali, kali - It is recommended to use more secure usernames and passwords.)
+
+Choose Guided - use entire disk
+Choose all files in one partition
+finish partitioning
+Choose yes
+
+Software selection - accept defaults
+
+install grub - y
+on /dev/sda
+
+reboot
+login with the previously chosen login details
+
+Navigate to the terminal
+run the 'ip a' command to identify the ip address
+
+run the $sudo nano /etc/network/interfaces command
+go to the bottom of the file and paste the following text in:
+    auto eth0
+    iface eth0 inet static
+        address 192.168.100.200/24
+        gateway 192.168.100.1
+        dns-nameservers 8.8.8.8
+
+Run the $sudo nano /etc/resolv.conf command and add the following:
+nameserver 8.8.8.8
+
+Run the following commands to finalise basic setup of the VM
+$ systemctl restart networking
+
+# ifdown eth0
+# ifup eth0
+
+# systemctl status networking
+# systemctl restart networking
+
+Confirm connectivity with the following commands
+$ip a  
+$ping 192.168.100.1    
+$ping 192.168.208.1  
+$ping 8.8.8.8
+
+If you are having network connectivity issues, run the following command
+$sudo nano /etc/NetworkManager/NetworkManager.conf
+In the file replace the word false with true then run the following command
+$service networking restart
+
+
+Kali Purple Configuration for Remote Management - ssh, rdp, console.
+
+Run the following commands in the terminal
+
+$sudo systemctl enable ssh --now  
+
+$sudo apt update && sudo apt install xrdp 
+
+$sudo systemctl enable xrdp --now 
+
+$sudo wget -P /etc/polkit-1/localauthority/50-local.d https://gitlab.com/kalilinux/documentation/kali-purple/-/raw/main/301_kali-purple/overlays/etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 
