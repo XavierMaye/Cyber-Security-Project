@@ -1,5 +1,16 @@
-DNS
-ADDS
+Windows Server Domain Controller Base information
+Computer Name - WinSerDC
+Domain - CYBERDC.local
+IP address - 192.168.100.100
+Subnet - 255.255.255.0
+
+
+
+List of Roles and Feature that have been added to the Windows server which were added with through using the add roles 
+ADDS (Active Directory Domain Services)
+After ADDS was installed we then promoted it to the domain controller.
+Windows Server Backup
+
 Group Policy Management
 - password, account, and audit policy
 - microsoft office macro diabled
