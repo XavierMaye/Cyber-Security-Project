@@ -71,3 +71,103 @@ $sudo systemctl enable xrdp --now
 
 $sudo wget -P /etc/polkit-1/localauthority/50-local.d https://gitlab.com/kalilinux/documentation/kali-purple/-/raw/main/301_kali-purple/overlays/etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 
+
+Kali Purple Configuration to Enable Serial Console
+
+Run the following command $sudo nano /etc/default/grub
+
+Paste the following into the file:
+GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0,115200n8 console=tty1" 
+GRUB_TERMINAL="serial console"  
+GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1" 
+
+Run the following commands
+$sudo update-grub 
+$sudo apt update && sudo apt full-upgrade  
+
+
+Configuration steps to install elastic and kibana:
+
+Run the following command
+$sudo apt update && sudo apt upgrade 
+sudo bash -c "export HOSTNAME=kali-purple.kali.purple; apt-get install elasticsearch -y" 
+
+Make sure to copy the generated password and save it somewhere, as you will need this whenever you want
+to login to elastic
+
+Run the following command to convert to a single-node setup
+$sudo sed -e '/cluster.initial_master_nodes/ s/^#*/#/' -i /etc/elasticsearch/elasticsearch.yml 
+echo "discovery.type: single-node" | sudo tee -a /etc/elasticsearch/elasticsearch.yml 
+
+To install kibana run the following commands:
+$sudo cat /etc/hosts  
+$sudo nano /etc/hosts
+
+In the file, beneath the localhost and kaliPurple ip addresses, add the following
+192.168.100.200   kali-purple.kali.purple
+
+$sudo apt install kibana  
+$sudo /usr/share/kibana/bin/kibana-encryption-keys generate –q 
+
+Remember to save the generated encryption keys.
+
+$echo "server.host: \"kali-purple.kali.purple\"" | sudo tee -a /etc/kibana/kibana.yml 
+
+$sudo systemctl enable elasticsearch kibana --now
+
+To confirm the elastic and kibana services are running run the following commands
+$systemctl status kibana 
+$systemctl status elasticsearch 
+
+To generate an enrolment token, run the following command.
+$sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana 
+Make sure to save the enrolment token somewhere
+
+Navigate to http://192.168.100.200:5601 and then paste the enrolment token into the prompt
+
+To get the verification code, run the following command in terminal
+$sudo /usr/share/kibana/bin/kibana-verification-code 
+Paste the code into the browser and verify it to access the login page.
+
+login with the username elastic and password that was generated from the command on line 93
+
+To enable https for kibana run the following commands once at a time,
+when asked for a password, keep using the generated password from line 93
+
+$sudo /usr/share/elasticsearch/bin/elasticsearch-certutil ca 
+$sudo /usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12 --dns kali-purple.kali.purple,elastic.kali.purple,kali-purple --out kibana-server.p12 
+$sudo openssl pkcs12 -in /usr/share/elasticsearch/elastic-stack-ca.p12 -clcerts -nokeys -out /etc/kibana/kibana-server_ca.crt 
+$sudo openssl pkcs12 -in /usr/share/elasticsearch/kibana-server.p12 -out /etc/kibana/kibana-server.crt -clcerts -nokeys 
+$sudo openssl pkcs12 -in /usr/share/elasticsearch/kibana-server.p12 -out /etc/kibana/kibana-server.key -nocerts -nodes 
+$sudo chown root:kibana /etc/kibana/kibana-server_ca.crt 
+$sudo chown root:kibana /etc/kibana/kibana-server.key 
+$sudo chown root:kibana /etc/kibana/kibana-server.crt 
+$sudo chmod 660 /etc/kibana/kibana-server_ca.crt 
+$sudo chmod 660 /etc/kibana/kibana-server.key 
+$sudo chmod 660 /etc/kibana/kibana-server.crt 
+ 
+$echo "server.ssl.enabled: true" | sudo tee -a /etc/kibana/kibana.yml 
+$echo "server.ssl.certificate: /etc/kibana/kibana-server.crt" | sudo tee -a /etc/kibana/kibana.yml 
+$echo "server.ssl.key: /etc/kibana/kibana-server.key" | sudo tee -a /etc/kibana/kibana.yml 
+$echo "server.publicBaseUrl: \"https://kali-purple.kali.purple:5601\"" | sudo tee -a /etc/kibana/kibana.yml 
+ 
+$sudo /usr/share/kibana/bin/kibana-encryption-keys generate  
+## Copy the generated keys into /etc/kibana/kibana.yml  
+
+Run the following command and paste the keys generated from the command on line 110 to the bottom
+of the file
+$sudo nano /etc/kibana/kibana.yml
+
+Restart kibana with the following command to allow the configuration steps to be applied.
+$sudo systemctl restart kibana
+
+You should now be able to access elastic using the following https address
+https://192.168.100.200:5601
+
+
+
+
+
+
+
+
