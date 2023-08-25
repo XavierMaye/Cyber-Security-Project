@@ -11,6 +11,15 @@ ADDS (Active Directory Domain Services)
 After ADDS was installed we then promoted it to the domain controller.
 Windows Server Backup
 
-Group Policy Management
+Tools > ADUC (Active Directory Users and Computers)
+we have created users for all members of the domain and applied them appropriate privileges for thier respective roles.
+we also created groups for users to be apart of respective to thier roles.
+
+Tools > Windows server backup
+Withing windows server backup we clicked on "backup schedule" and set backup of the entire system to be backed up to a seperated hard drive at 2.00AM everyday.
+
+
+
+Tools > Group Policy Management
 - password, account, and audit policy
 - microsoft office macro diabled
