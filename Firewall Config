@@ -1,5 +1,25 @@
+Install Software Updates: To comply with the ASD 8 maturity level, 
+Patches, updates or other vendor mitigations for vulnerabilities in internet-facing services are applied within two weeks of release, or within 48 hours if an exploit exists.
+
+Under the “System > Settings > Administration” page we have configured the following:
+We changed the protocol to HTTPS
+We enable HTTP strict transport security
+Uncheked 'Disable DNS rebinding checks'
+We enable access logging
+We added a shell inactivity timeout of 60 minutes
+For access to Web GUI has been restricted to the LAN interface
+
+Add new admin user for IT access (use of root account should be avoided unless absolutely nessecary)
+Admin users with have access to Dashboard and widgets
+
+Disable root login through SSH (must use Web GUI from internal IP addrss)
+
+sudo commands require password input
+
+Enable 24 hour backup 
+
 Interfaces [DMZ]
-We have congiured the firewall with the following rules:
+We have congiured the firewall with the following settings:
 
 Basic configurations 
 Enable: Yes enable interface
@@ -30,7 +50,7 @@ IPv4 address: 192.168.50.1
 IPv4 Upstream Gateway: Auto-detect
 
 Interfaces [LAN]
-We have congiured the firewall with the following rules:
+We have congiured the firewall with the following settings:
 
 Basic configurations 
 Enable: Yes enable interface
@@ -62,7 +82,7 @@ IPv4 Upstream Gateway: Auto-detect
 
 
 Interfaces [WAN]
-We have congiured the firewall with the following rules:
+We have congiured the firewall with the following settings:
 
 Basic configurations 
 Enable: Yes enable interface
@@ -91,6 +111,7 @@ Overwrite global settings: NOT enabled
 DHCP client configuration
 
 Configuration Mode (Basic)
+
 Alias IPv4 ddress:
 Reject Leases From:
 Hostname:
@@ -98,6 +119,7 @@ Override MTU: Enabled
 Use VLAN priority: Disabled
 
 Configuration Mode (Advanced)
+
 Reject Leases From:
 Hostname:
 Override MTU: Enabled
@@ -106,6 +128,7 @@ Protocol Timing:
 Lease Requirements:
 
 Configuration Mode (Config File Override) 
+
 Configuration FIle Override: 
 
 
