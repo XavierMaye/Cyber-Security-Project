@@ -1,0 +1,51 @@
+The following configuration was applied to setup the windows clients:
+
+Initial IP address set to 192.168.100.20/24 with a default gateway of 192.168.100.1.
+
+Connectivity confirmed with the following commands:
+C:>ipconfig /all   
+C:>ping 192.168.100.1  
+C:>ping 192.168.208.1  
+C:>ping 8.8.8.8
+
+Accessibility of Palo Alto Firewall confirmed by bridging the Windows VM and navigating to the
+https://192.168.100.1 address. Login details are - Username: admin Password: Password1
+(Palo Alto Firewall needs to be setup first)
+
+Elastic Configuration Process for Windows Client:
+
+On the Kali Purple production VM (See Kali Purple Production VM Documentation),
+
+navigate to elastic in your browser.
+
+Elastic login details:
+Username - Elastic
+Password - Generated password during elastic setup in Kali Purple VM e.g. dEjChtkQy=-6tDm23_Sq
+
+Browse to: Management > Integrations > add security integrations
+select: - elastic defend
+Add elastic defend
+Integration name: Windows defend
+Description: Blank
+select: - traditional endpoints select: Next gen antivirus
+
+Where to add this integration
+New Hosts - create agent policy
+New agent policy name: Windows defend policy
+Tick: - Collect system logs and metrics
+Press: -Save and continue- BUTTON
+
+Press: -Add elastic Agent to your Host- BUTTON
+Select the enrolment token
+click on the windows tab to obtain the powershell script that can be used to install
+elastic on the windows client
+
+Run powershell as administrator in the Windows Client VM
+paste the copied script with a --insecure added to the end of it.
+Run the script
+Confirm installation with a 'Y'
+
+Installation should be confirmed both in powershell and elastic in the Kali VM
+
+Confirmed data was being collected by navigating to Elastic > Discover and finding an event with
+the agent.name field set to your endpoint
