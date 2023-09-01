@@ -33,6 +33,69 @@ to run some external command ....not only k....any other command ...
 
 kali@kali( :~/autopilot) $ kali-autopilot
 
+you can import some .json
+
+and modified......save ..generate.......
+
+kali& nano ~/kali-autopilot/test/test.py    
+
+.......python code ....
+
+just insure all library install.....
+
+/mutex.txt
+
+users ={'offsect':'offsect'}    ###you can change to different name...
+
+api_port =443
+
+....def check_deployment():
+
+................etho... ...###you an change interface  or API port....here.
+
+def attack():     you can see 
+
+subnet...
+
+kp_ip...
+
+delay.......etc... etc....
+
+
+
+how to run script:
+
+~/kali-autopilot/test/test.py
+
+/home/kali/kali-autopilot/test01/test01.py
+
+APi :
+
+advance the Stage with the mutex interface
+login: offsec
+passwd: offsec
+
+http://192.168.100.200:443/set
+
+Start stage 1 of test
+http://192.168.100.200:443/set?mutex=1
+
+
+
+/set
+
+/set?mutex=2   stage 2
+
+/set?mutex=-1   -3....   need click loop...  for ...sequential...
+
+/set?mutex=100   loop
+
+/set?mutex=0   reset..
+
+/check 
+
+
+
 
 
 
