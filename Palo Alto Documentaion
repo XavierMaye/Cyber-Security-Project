@@ -1,1 +1,28 @@
 Palo Alto Configuration
+
+Interfaces
+ethernet1/1 ip address 192.168.208.250/24
+ethernet1/2 ip address 192.168.100.1/24
+ethernet1/3 ip address 192.168.50.1/24
+
+Zones
+WAN zone is allocated to the ethernet1/1 interface
+LAN zone is allocated to the ethernet1/2 interface
+DMZ zone is allocated to the ethernet1/3 interface
+
+Virtual Router
+Vr-1 is assigned to all the ethernet interfaces to provide connectivity between each interface
+as well as to provide a default route.
+
+Security Rules
+LAN to WAN rule
+source zone - LAN, Destination zone WAN, application - DNS, Ping, SSL, Web-browsing. application - any,  action - allow
+
+DMZ to WAN
+source zone - DMZ, destination zone WAN, application - DNS, ms-rdp, ssh, mysql, Web-browsing. service - application-default, action - allow
+
+LAN to DMZ
+source zone - LAN, destination zone - DMZ, application - ms-rdp, ssh, mysql, web-browsing, DNS, ping. application - application-default, acion - allow
+
+DMZ web server access
+source zone - WAN, destination - DMZ, destination address - 192.168.208.250, application - ms-rdp, ssh, mysql, web-browsing. application - application-default, action - allow
