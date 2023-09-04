@@ -26,3 +26,12 @@ source zone - LAN, destination zone - DMZ, application - ms-rdp, ssh, mysql, web
 
 DMZ web server access
 source zone - WAN, destination - DMZ, destination address - 192.168.208.250, application - ms-rdp, ssh, mysql, web-browsing. application - application-default, action - allow
+
+NAT rules
+LAN to WAN (this rule allows user from the LAN zone to be able to access the internet by having the address translated to 192.168.208.250 ip address.)
+source zone - LAN, destination zone - WAN, destination interface - ethernet1/1, source translation - dynamic-ip-and-port, interface ethernet1/1, ip address 192.168.208.250/24
+
+Destination NAT from WAN zone
+source zone - WAN, destination zone - WAN, destination address - 192.168.208.250, service - remote_services(service group consisting of ssh, ms-rdp, mqsql.), destination translation for address 192.168.50.100(DMZ web server)
+
+
