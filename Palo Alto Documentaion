@@ -7,8 +7,14 @@ ethernet1/3 ip address 192.168.50.1/24
 
 Zones
 WAN zone is allocated to the ethernet1/1 interface
-LAN zone is allocated to the ethernet1/2 interface
+LAN zone is allocated to the ethernet1/2 interface (DHCP applied)
 DMZ zone is allocated to the ethernet1/3 interface
+
+DHCP 
+DHCP address between 192.168.100.1 - 192.168.100.50.
+Subnet 255.255.255.0
+Default gateway 192.168.100.1
+DNS - 192.168.100.100(windows server domain controller)
 
 Virtual Router
 Vr-1 is assigned to all the ethernet interfaces to provide connectivity between each interface
