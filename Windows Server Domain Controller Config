@@ -4,7 +4,9 @@ Domain - CYBERDC.local
 IP address - 192.168.100.100
 Subnet - 255.255.255.0
 
-
+login credentials 
+username - Administrator
+Password - Password1(this is for test environment this will changed to more complex password upon implementation)
 
 List of Roles and Feature that have been added to the Windows server which were added with through using the add roles 
 ADDS (Active Directory Domain Services)
