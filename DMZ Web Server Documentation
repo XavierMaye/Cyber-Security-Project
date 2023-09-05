@@ -1,2 +1,16 @@
 UFW security rules
 
+allowing LAN zone rule (192.168.100.0/24 network) through ports 80(HTTP) and 443(HTTPS)
+command - "sudo ufw allow from 192.168.100.0/24 to any port 80"
+command - "sudo ufw allow from 192.168.100.0/24 to any port 443"
+
+allowing SSH from LAN zone rule (192.168.100.0/24 network) through port 22(SSH)
+command - "sudo ufw allow from 192.168.100.0/24 to any port 22"
+
+allowing remote desktop from LAN zone rule (192.168.100.0/24 network) through port to any port 3389(rdp)
+command - "sudo ufw allow from 192.168.100.0/24 to any port 3389"
+
+allowing DNS from the WAN ip "8.8.8.8" through UDP port 53.
+command - "sudo ufw allow from 8.8.8.8 to any port 53"
+
+
