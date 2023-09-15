@@ -25,3 +25,5 @@ Withing windows server backup we clicked on "backup schedule" and set backup of 
 Tools > Group Policy Management
 - password, account, audit policy and account lockout
 - microsoft office macro diabled
+- java disabled
+- internet explorer disbled
