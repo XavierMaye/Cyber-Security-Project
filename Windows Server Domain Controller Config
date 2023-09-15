@@ -1,4 +1,5 @@
 Windows Server Domain Controller Base information
+Version - windows server 2022
 Computer Name - WinSerDC
 Domain - CYBERDC.local
 IP address - 192.168.100.100
@@ -21,7 +22,6 @@ Tools > Windows server backup
 Withing windows server backup we clicked on "backup schedule" and set backup of the entire system to be backed up to a seperated hard drive at 2.00AM everyday.
 
 
-
 Tools > Group Policy Management
-- password, account, and audit policy
+- password, account, audit policy and account lockout
 - microsoft office macro diabled
