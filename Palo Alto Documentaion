@@ -1,4 +1,5 @@
 Palo Alto Configuration
+software version - 9.0.4
 
 Interfaces
 ethernet1/1 ip address 192.168.208.250/24
